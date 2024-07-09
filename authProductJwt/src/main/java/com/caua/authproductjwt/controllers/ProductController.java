@@ -5,9 +5,8 @@ import com.caua.authproductjwt.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @Controller
@@ -22,5 +21,9 @@ public class ProductController {
     @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ProductModel findById(@PathVariable Long id){
         return productService.findById(id);
+    }
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ProductModel add(@RequestBody ProductModel product){
+        return productService.save(product);
     }
 }

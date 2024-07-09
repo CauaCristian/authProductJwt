@@ -15,9 +15,13 @@ public class ProductService {
     public List<ProductModel> findAll(){
         return productRepository.findAll();
     }
-
     public ProductModel findById(Long id){
         return productRepository.findById(id).orElseThrow(()->new RuntimeException("Not found"));
     }
-
+    public ProductModel save(ProductModel productModel){
+        return productRepository.save(productModel);
+    }
+    public void delete(ProductModel productModel){
+        productRepository.delete(productModel);
+    }
 }
